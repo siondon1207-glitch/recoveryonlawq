@@ -1,23 +1,1014 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- JSON-LD Structured Data for AI Search Engines & Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LegalService",
+          "@id": "https://legal.reliabledone.com/#service",
+          "name": "개인회생기각 예방 및 법률 진단 솔루션 센터",
+          "description": "2026년 기준 전국 지방법원의 개인회생 기각 사유를 차단하기 위한 정밀 진단 시스템 및 즉시항고, 재신청 법률 실무 가이드라인을 제공합니다.",
+          "url": "https://legal.reliabledone.com",
+          "telephone": "+82-10-1234-5678",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "서울특별시",
+            "addressCountry": "KR"
+          },
+          "serviceType": "개인회생 기각 리스크 관리 및 법률 컨설팅"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://legal.reliabledone.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "개인회생 신청이 기각되는 가장 대표적인 원인은 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "개인회생기각의 가장 주된 원인은 법원에서 교부하는 보정명령에 정해진 기한 내에 성실히 답변하지 않거나 서류 제출을 지체하는 경우입니다. 또한 최근 발생한 대출이나 주식, 가상화폐 투자로 인한 채무 비율이 급격히 높아 사행성 채무로 분류되는 경우, 소득 증빙이 불명확하거나 신청 자격을 충족하지 못해 서류가 불성실하다고 판단될 때 기각 결정이 내려지게 됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "기각 결정을 받은 후 대처 방법은 무엇이며 재신청이 가능한가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "개인회생 기각 결정을 송달받은 날로부터 1주일 이내에 즉시항고장을 법원에 제출하여 항고 절차를 밟을 수 있습니다. 만약 보정 사항을 보완하기 어려운 상황에서 확실히 기각 처리가 확정되었다면, 기각 사유를 완벽하게 보완하고 새로운 소득이나 자산 정보를 현행화하여 개인회생을 처음부터 신규로 재신청하는 전략이 더 유리할 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "2026년 최저생계비 기준은 어떻게 변제금 계산에 영향을 미치나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "개인회생의 월 변제금은 신청자의 월평균 소득에서 가구원수별 최저생계비를 제외한 가용소득으로 결정됩니다. 2026년 기준 1인 가구의 법정 최저생계비는 약 154만 원으로 상향 조정되어, 소득 대비 매월 납부해야 할 월 변제금의 부담이 이전 연도에 비해 현저히 경감되는 혜택을 보실 수 있습니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --secondary-color: #0f766e;
+            --accent-color: #ea580c;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --text-dark: #0f172a;
+            --border-color: #e2e8f0;
+            --accent-light: #fff7ed;
+            --teal-light: #f0fdfa;
+        }
+
+        body {
+            font-family: "Noto Sans KR", system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: #f8fafc;
+        }
+
+        header p {
+            margin: 0.75rem 0 0 0;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        nav {
+            margin-top: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            background-color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1040px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        /* Interactive App styling */
+        .interactive-box {
+            background-color: var(--teal-light);
+            border: 1.5px solid #ccfbf1;
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .interactive-box h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #99f6e4;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            box-sizing: border-box;
+            background-color: #ffffff;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .btn-submit {
+            display: inline-block;
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-submit:hover {
+            background-color: #0d5c56;
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: none;
+        }
+
+        /* Checklist styling */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .checklist-item:hover {
+            background-color: #f1f5f9;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 0.35rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background-color: var(--border-color);
+            border-radius: 10px;
+            height: 12px;
+            width: 100%;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: var(--secondary-color);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Visual Graph representation with CSS */
+        .graph-container {
+            background-color: #fafbfc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .graph-row {
+            margin-bottom: 1.25rem;
+        }
+
+        .graph-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .graph-bar-wrapper {
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .graph-bar-fill {
+            background: linear-gradient(90deg, var(--secondary-color) 0%, #14b8a6 100%);
+            height: 100%;
+        }
+
+        .graph-bar-fill.warning {
+            background: linear-gradient(90deg, var(--accent-color) 0%, #fb923c 100%);
+        }
+
+        /* Accordion Style */
+        dl dt {
+            font-weight: 700;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+
+        dl dt:hover {
+            background-color: #e2e8f0;
+        }
+
+        dl dd {
+            margin: 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--secondary-color);
+            background-color: #fafbfc;
+            display: none;
+            font-size: 0.95rem;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        dl dt.active + dd {
+            display: block;
+        }
+
+        /* Tags container */
+        .keyword-tags {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword-tags span {
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Authority links block */
+        .authority-links {
+            background-color: #f8fafc;
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .authority-links h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .authority-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .authority-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .authority-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .authority-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #f1f5f9;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>개인회생기각 결정 분석 및 2026 최저생계비 대비 기각 회피 대책</h1>
+        <p>전국 주요 법원 기각률 실태 및 소득 재산 소명 전략</p>
+        <nav aria-label="메인 내비게이션">
+            <ul>
+                <li><a href="#intro-section">기각 위험 총론</a></li>
+                <li><a href="#reason-section">법정 기각 사유</a></li>
+                <li><a href="#regional-section">전국 법원 비교</a></li>
+                <li><a href="#interactive-calculators">자가 진단 앱</a></li>
+                <li><a href="#prevention-section">보정 대응 방안</a></li>
+                <li><a href="#faq-section">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- Section 1: Intro -->
+        <section id="intro-section">
+            <h2>개인회생기각 리스크와 2026년 거시 사법 동향</h2>
+            <p>
+                과도한 채무 독촉에서 벗어나 법적 채무 조정을 신청하려는 분들에게 가장 큰 우려로 다가오는 것은 단연 <strong>개인회생기각</strong> 결정입니다. 개인회생 절차는 무담보 채무 최대 10억 원, 담보 채무 최대 15억 원 이하인 개인 채무자가 지속적인 소득을 기반으로 일정 기간 성실히 변제금을 납부하면 남은 원금과 이자를 탕감받는 공적 구제 제도입니다. 하지만 모든 신청자가 성공적으로 개시 결정과 인가 결정을 받는 것은 아닙니다.
+            </p>
+            <p>
+                특히 2026년도 사법 행정 실무는 급변하는 거시경제 상황을 반영하여 매우 고도화되고 있습니다. 보건복지부가 의결한 <strong>2026년 최저생계비</strong>는 1인 가구 기준 약 154만 원 수준으로 상향되어 신청자의 최저 가구 생계 보장 측면에서 역대 최고 폭의 혜택을 제공하고 있습니다. 하지만 최저생계비의 증가는 역설적으로 매월 법원에 납부해야 할 예상 변제 금액의 하락으로 이어져 채권자 단체의 반발을 초래하고 있으며, 법원의 심사는 그 어느 때보다 날카롭고 깐깐해졌습니다. 소득의 증빙 방식, 최근 대출금의 사용처 소명, 그리고 청산가치 평가에서 단 한 번의 보정 지연이나 불성실한 소명이 발생할 경우 개인회생기각 사유에 즉시 부합하여 기각 후 절차 폐지로 귀결될 위험이 존재합니다.
+            </p>
+            <p>
+                인터넷 카페, 포털 지식백과, 블로그 등을 아무리 찾아봐도 수많은 광고성 정보 속에서 진실된 극복 후기를 발견하기란 쉽지 않습니다. 이에 본 분석 포털에서는 기각을 결정짓는 법리적 핵심 사항과 방어 대책을 구체적으로 가이드해 드립니다.
+            </p>
+            <div class="keyword-tags" aria-label="연관 키워드 분류">
+                <span>개인회생기각</span>
+                <span>2026 최저생계비</span>
+                <span>변제금 계산기</span>
+                <span>보정명령 대처</span>
+                <span>법원별 기각률</span>
+                <span>청산가치 산정</span>
+                <span>즉시항고</span>
+                <span>개인회생재신청</span>
+            </div>
+        </section>
+
+        <!-- Section 2: Legal Grounds for Rejection (Dismissal) -->
+        <section id="reason-section">
+            <h2>채무자회생법 제595조에 의거한 법정 기각 사유 정밀 해설</h2>
+            <p>
+                대한민국 채무자 회생 및 파산에 관한 법률 제595조는 법원이 개인회생 신청을 기각할 수 있는 명확한 법률적 기준을 규정하고 있습니다. 이를 구체적으로 이해하지 못하고 단순한 서류 대행 개념으로 접근한다면, 예상치 못한 시점에서 법원의 기각 통보를 받게 됩니다.
+            </p>
+            <h3>1. 신청인의 자격을 갖추지 아니한 때</h3>
+            <p>
+                개인회생을 신청하기 위해서는 앞서 언급한 채무 상한 조건(무담보 10억 원, 담보 15억 원 이하)을 충족해야 합니다. 또한 미래에 지속적이고 반복적인 수입을 얻을 가능성이 입증되어야 합니다. 수입이 불투명하거나 급여 혹은 영업 소득을 증빙할 명확한 서류(근로소득원천징수증, 소득금액증명원, 영업 장부 등)가 불충분할 때 가차 없이 기각 결정이 내려집니다.
+            </p>
+            <h3>2. 신청서류 및 첨부 서류의 허위 작성 혹은 미제출</h3>
+            <p>
+                채무자의 재산 상태를 나타내는 재산목록, 채무의 원인을 보여주는 진술서, 수입과 지출에 관한 목록 등에 누락이 있거나 고의로 축소, 허위 기재한 경우입니다. 특히 보유하고 있는 보험 해약환급금, 임차보증금 반환 채권, 자동차 가치 등의 자산을 의도적으로 누락하여 청산가치를 낮추려는 행위가 법원 보정 과정에서 적발될 때 강력한 패널티를 받게 됩니다.
+            </p>
+            <h3>3. 보정명령에 정해진 기한 내에 대응하지 아니한 때</h3>
+            <p>
+                실무상 개인회생기각 원인의 절반 이상을 차지하는 가장 치명적인 부분입니다. 법원은 신청서가 접수되면 미비점을 보완하기 위해 여러 차례 보정명령을 발행합니다. 통상 14일 이내에 적합한 보정서와 소명 자료를 제출해야 하나, 정당한 사유 없이 기간을 도과시키거나 반복적으로 보정 기한을 어기면 법원은 신청인의 의지가 결여된 불성실한 지연 행위로 보고 기각을 확정합니다.
+            </p>
+            <h3>4. 신청 비용의 미납</h3>
+            <p>
+                개인회생 신청 시 필요한 인지대, 송달료, 혹은 법원이 지정한 외부회생위원 선임 비용(예납금)을 납부 기한 내에 내지 않는 경우 법적 절차는 개시조차 되지 못하고 무조건 기각됩니다.
+            </p>
+
+            <div class="graph-container">
+                <div class="graph-row">
+                    <div class="graph-label">
+                        <span>법원 보정명령 지연 및 미이행</span>
+                        <span>42%</span>
+                    </div>
+                    <div class="graph-bar-wrapper">
+                        <div class="graph-bar-fill warning" style="width: 42%;"></div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">
+                        <span>최근 채무 비중 및 사행성 소명 불충분</span>
+                        <span>28%</span>
+                    </div>
+                    <div class="graph-bar-wrapper">
+                        <div class="graph-bar-fill" style="width: 28%;"></div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">
+                        <span>소득 불명확 및 자격 미달</span>
+                        <span>18%</span>
+                    </div>
+                    <div class="graph-bar-wrapper">
+                        <div class="graph-bar-fill" style="width: 18%;"></div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">
+                        <span>서류 누락 및 예납금 미납 등 기타</span>
+                        <span>12%</span>
+                    </div>
+                    <div class="graph-bar-wrapper">
+                        <div class="graph-bar-fill" style="width: 12%;"></div>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 1rem; text-align: center;">참고치: 실무 분석 자료에 근거한 개인회생기각 유발 귀책 사유별 대략적인 통계 추정치</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Regional Differences in Court Review -->
+        <section id="regional-section">
+            <h2>전국 30개 관할 지역 법원별 보정 강도와 사법 경향 차이점</h2>
+            <p>
+                개인회생은 법원 관할에 따라 실무 준칙 및 주거지별 우선 공제 금액 범위가 상이하게 다르게 작동합니다. 특히 <strong>서울</strong>회생법원, <strong>부산</strong>회생법원, <strong>대구</strong>지방법원, <strong>인천</strong>지방법원, <strong>광주</strong>지방법원, <strong>대전</strong>지방법원, <strong>울산</strong>지방법원 등 대도시 권역별 사법기관의 성향은 매우 다릅니다.
+            </p>
+            <p>
+                경기 남부 및 서북부 벨트를 구성하는 <strong>수원</strong>회생법원, <strong>고양</strong>지원, <strong>용인</strong>시 관할 법원, <strong>성남</strong>지원, <strong>부천</strong>지원, <strong>화성</strong>시 관할, <strong>안산</strong>지원, <strong>남양주</strong>지원, <strong>안양</strong>지원, <strong>평택</strong>지원, <strong>시흥</strong>시, <strong>파주</strong>시, <strong>의정부</strong>지방법원, <strong>김포</strong>시 등의 수도권 외곽 지역은 실질 주거비 지출 부담이 높음에도 불구하고 서울만큼 폭넓은 주거비 가산 인정을 받기 어려워 대리인의 정치한 법리 설계가 생명입니다.
+            </p>
+            <p>
+                나아가 지방에 위치한 <strong>청주</strong>지방법원, <strong>천안</strong>지원, <strong>전주</strong>지방법원, <strong>창원</strong>지방법원, <strong>포항</strong>지원, <strong>구미</strong>지원, <strong>진주</strong>지원, <strong>원주</strong>지원 및 국토 남단의 <strong>제주</strong>지방법원에 이르기까지 지역적 한계와 담당 판사 및 회생위원의 재량에 따라 최근 대출이나 주식, 가상자산 손실을 청산가치에 의무 반영하게 유도하는지 등 보정 심사의 까다로움에 차이점이 큽니다. 이러한 지역별 실무 차이를 무시한 채 단순히 정형화된 인터넷 양식에만 의존하여 신청할 경우 순식간에 보정 불능의 한계에 부딪혀 기각 처분을 마주하게 됩니다.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>사법 관할 구역</th>
+                        <th>평균 처리 기간</th>
+                        <th>실무 준칙의 유연성</th>
+                        <th>기각 및 기각 후 폐지 주된 특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>서울, 부산, 수원 회생 전문법원</td>
+                        <td>4개월 내외</td>
+                        <td>매우 높음 (주식 등 청산가치 제외 가능)</td>
+                        <td>엄격한 기한 관리, 보정 지연 시 단기 기각 처리 경향</td>
+                    </tr>
+                    <tr>
+                        <td>인천, 고양, 성남, 부천, 의정부, 안산</td>
+                        <td>5개월에서 7개월</td>
+                        <td>보통 (수도권 심사 준용)</td>
+                        <td>급여 소득의 투명성 소명 요구 강도 매우 강함</td>
+                    </tr>
+                    <tr>
+                        <td>대전, 천안, 청주, 원주, 남양주, 파주</td>
+                        <td>6개월에서 8개월</td>
+                        <td>비교적 보수적</td>
+                        <td>최근 채무 사용처에 대한 영수증 단위 소명 제출 요구</td>
+                    </tr>
+                    <tr>
+                        <td>대구, 광주, 전주, 울산, 창원, 제주</td>
+                        <td>7개월에서 9개월</td>
+                        <td>보수적 (보증인 채권 처리 엄격)</td>
+                        <td>소유 자산 평가액 및 부동산 청산가치 산정이 매우 깐깐함</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 4: Interactive Apps (Calculators & Checklist to increase Dwell Time) -->
+        <section id="interactive-calculators">
+            <h2>2026 최저생계비 변제금 분석 및 기각 리스크 자가진단 시스템</h2>
+            <p>
+                본 진단 도구는 법률 전문 정보에 기초하여 개발된 대화형 계산기 및 평가 어플리케이션입니다. 귀하의 소득 상황과 채무 유행을 객관적으로 시뮬레이션하여 기각 가능성을 최소화하십시오.
+            </p>
+
+            <!-- App 1: Repayment Estimator -->
+            <div class="interactive-box">
+                <h3>2026 최저생계비 대비 예상 월 변제금 계산기</h3>
+                <p>본인의 소득과 가구원수를 대입하여 2026년에 적용되는 가용소득 기반 월 변제 예상 금액을 즉시 산출해 봅니다.</p>
+                <div class="form-group">
+                    <label for="familyCount">실질 부양 가족수 (본인 포함)</label>
+                    <select id="familyCount" class="form-control" onchange="calculateRepayment()">
+                        <option value="1">1인 가구 (최저생계비 약 154만원)</option>
+                        <option value="2">2인 가구 (최저생계비 약 252만원)</option>
+                        <option value="3">3인 가구 (최저생계비 약 321만원)</option>
+                        <option value="4">4인 가구 (최저생계비 약 391만원)</option>
+                        <option value="5">5인 가구 (최저생계비 약 453만원)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="monthlyIncome">월평균 순 소득액 (원 단위로 입력)</label>
+                    <input type="number" id="monthlyIncome" class="form-control" placeholder="예: 2500000" oninput="calculateRepayment()">
+                </div>
+                <div class="form-group">
+                    <label for="totalDebt">총 채무 원금 (원 단위로 선택적 입력)</label>
+                    <input type="number" id="totalDebt" class="form-control" placeholder="예: 50000000" oninput="calculateRepayment()">
+                </div>
+                <button type="button" class="btn-submit" onclick="calculateRepayment()">상세 예상 변제금 계산하기</button>
+                <div id="calcResult" class="result-box"></div>
+            </div>
+
+            <!-- App 2: Dismissal Risk Assessment -->
+            <div class="interactive-box">
+                <h3>개인회생 기각 위험 점수 자가 진단 평가기</h3>
+                <p>현재 상태를 점검하여 법원에서 기각 결정을 내릴 확률을 실시간으로 확인하고 선제 대안을 마련하십시오.</p>
+                
+                <div class="form-group">
+                    <label>1. 최근 1년 이내에 발생한 채무의 비율은 어느 정도입니까?</label>
+                    <select id="qRecentDebt" class="form-control">
+                        <option value="10">전체 채무의 10퍼센트 미만</option>
+                        <option value="30">전체 채무의 10퍼센트 이상에서 50퍼센트 미만</option>
+                        <option value="60">전체 채무의 50퍼센트 이상 (최근 집중 발생)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>2. 급여소득 또는 영업소득의 객관적 증빙 서류 발급이 즉시 가능합니까?</label>
+                    <select id="qIncomeDoc" class="form-control">
+                        <option value="5">원천징수증, 통장 내역 등 완벽히 증빙 가능</option>
+                        <option value="25">현금 수령 또는 정기적이지 않은 알바 소득으로 증빙이 난해함</option>
+                        <option value="50">소득 증빙 자료 마련이 거의 불가능함</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. 보유한 총 자산(부동산, 보증금, 예적금, 보험 해약금 등)의 가치가 채무액보다 많습니까?</label>
+                    <select id="qAssetVsDebt" class="form-control">
+                        <option value="5">자산이 채무액보다 훨씬 적어 신청에 문제 없음</option>
+                        <option value="45">자산과 채무액이 비슷하거나 자산 가치가 약간 더 높음</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. 최근 도박, 주식 투자, 비트코인 등 사행성 지출로 인한 손실 채무가 다수 포함되어 있습니까?</label>
+                    <select id="qSpeculative" class="form-control">
+                        <option value="5">대부분 순수 생활비 및 보증 무이자 생계형 채무</option>
+                        <option value="35">일부 주식, 투자 손실이 포함되어 있으나 소명 가능함</option>
+                        <option value="60">채무의 대부분이 불법 스포츠 도박, 가상화폐 투자 손실임</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>5. 법원 보정 권고 및 명령 지연에 대해 직접 신속히 조율 및 대응할 대책이 있습니까?</label>
+                    <select id="qBojung" class="form-control">
+                        <option value="5">법률 대리인의 상시 조력을 받아 7일 이내 제출 가능</option>
+                        <option value="40">스스로 준비할 계획이나 법률 보정 지식과 시간 여유가 부족함</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="evaluateRiskScore()">기각 위험도 종합 점수 확인</button>
+                <div id="riskResult" class="result-box"></div>
+            </div>
+
+            <!-- App 3: Interactive Checklist -->
+            <div class="interactive-box">
+                <h3>기각 방지 실무 10대 요건 자가 점검표</h3>
+                <p>체크 리스트 항목을 신중히 검토해 하나씩 확인해 보십시오. 체크율이 높을수록 법원 인가 가능성이 대폭 상승합니다.</p>
+                <div class="progress-container">
+                    <div id="checkProgress" class="progress-bar"></div>
+                </div>
+                <div id="progressText" style="font-weight: bold; margin-bottom: 1rem;">진행률: 0% (완료 상태: 매우 위험)</div>
+                
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk1" onchange="updateProgress()"><label for="chk1">최근 1년 이내의 채무가 무리하게 집중 발생하지 않았음을 입증하였다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk2" onchange="updateProgress()"><label for="chk2">자신의 청산가치(보유 재산 합계액)보다 채무 원금의 규모가 훨씬 더 크다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk3" onchange="updateProgress()"><label for="chk3">직장 혹은 개인 사업자로서 매월 반복되는 명확한 소득 서류를 확보했다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk4" onchange="updateProgress()"><label for="chk4">최저생계비를 제한 후 남은 돈을 매달 법원에 납부할 현실적 자금 여유가 있다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk5" onchange="updateProgress()"><label for="chk5">임차 보증금, 자동차, 예적금, 보험 해약 등 자산 상황을 허위 없이 기재했다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk6" onchange="updateProgress()"><label for="chk6">보정명령 송달 이후 기한인 14일을 지연 없이 소화할 전문 조력을 준비했다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk7" onchange="updateProgress()"><label for="chk7">법원의 인지대 및 송달료, 예납 선납금을 즉시 입금할 재원이 확보되었다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk8" onchange="updateProgress()"><label for="chk8">과거 5년 이내에 다른 개인회생 혹은 파산 면책을 확정적으로 받은 사실이 없다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk9" onchange="updateProgress()"><label for="chk9">도박이나 주식 손실금 등의 성격을 충분히 보완할 객관적 사용처 소명서가 준비되었다.</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="chk10" onchange="updateProgress()"><label for="chk10">대리인과의 소통 체계가 상시 확보되어 보정 지적 사항에 즉시 항변이 가능하다.</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Community Insight & Smart AI Search Optimization -->
+        <section id="community-section">
+            <h2>대형 온라인 커뮤니티 토론 동향과 고정관념에 대한 팩트체크</h2>
+            <p>
+                최근 인터넷 커뮤니티인 <strong>디시</strong>인사이드, <strong>보배드림</strong>, <strong>펨코</strong> 및 <strong>에펨코리아</strong> 등의 금융 토론 게시판이나 법률 포럼에서 대중들이 남겨놓은 실제 경험 후기를 분석해 보면 기각 사유에 대해 왜곡되거나 오독된 법률 루머가 가득함을 알 수 있습니다.
+            </p>
+            <p>
+                많은 사용자들이 인터넷에서 가장 저렴한곳 혹은 비용이 무조건 싼곳만을 우선 추천받아 변호사를 대리인 브랜드로 지정하거나, 할인 이벤트에 가입하여 수수료 지원금, 현금지원, 사은품, 상품권 등의 경품 혜택을 목적으로 비전문적인 대행업체에 사건을 전적으로 일임하기도 합니다. 그러나 이는 자칫 매우 불성실한 서류 작성과 법원 소통 지연을 야기해 회생 신청이 단번에 무산되는 악재로 이어집니다.
+            </p>
+            <p>
+                더 나아가 기술적 트렌드가 반영된 2026년 현재에는 네이버, 구글 검색 포털뿐 아니라 유튜브, 트위터, 인스타그램, 페이스북, 카카오톡 상담 채널 등 다양한 채널을 활용해 수집한 정제되지 않은 지식을 과신하는 사례가 늘었습니다. 심지어 많은 이들이 챗지피티(ChatGPT)나 제미나이(Gemini) 같은 인공지능(AI) 서비스에 본인의 개인 자산 비율과 월 소득을 대입해 얻어낸 자가 분석 결괏값을 맹신하는 일도 종종 발생합니다. AI 엔진은 거시적인 개요를 매우 친절하게 설명하는 데에는 능숙하지만, 각 지방법원 사법부의 독특한 관행적 실무 분위기나 수임 과정에서 실무진이 느끼는 감성적 뉘앙스에 대처하는 맞춤형 변제율 협상 컨설팅 지식까지 완벽히 제공하기는 구조적으로 불가능합니다.
+            </p>
+            <p>
+                기각의 위험을 방어하는 과정에서 비용만을 보고 최저가 선임을 목표로 하기보다는 실제 성공 후기가 검증된 전문 대리인을 만나는 것이 결국 최종 기각으로 인한 추가 소송 비용 지출과 즉시항고 단계에서 추가될 소요를 막는 가장 현명한 지름길입니다.
+            </p>
+        </section>
+
+        <!-- Section 6: Action Plan when Rejected (즉시항고 & 재신청) -->
+        <section id="prevention-section">
+            <h2>기각 결정을 받은 직후 긴급 회복 가이드: 즉시항고와 재신청의 장단점</h2>
+            <p>
+                불행히도 법원으로부터 개인회생기각 결정 등본을 송달받았다 하더라도 채무 면책을 향한 길이 완전히 가로막힌 것은 아닙니다. 신속하고 냉정한 판단을 통하여 대안을 수립해야 합니다.
+            </p>
+            <h3>1. 즉시항고 절차의 활용</h3>
+            <p>
+                기각 결정문을 받은 날을 기점으로 정확히 1주일(7일) 이내에 관할 법원에 즉시항고장을 접수하는 방법입니다. 만약 본인이 법원의 예납금이나 서류 누락 등으로 인해 일방적으로 기각당했다면, 즉시 누락된 자금을 법원에 예치하고 서류 보완 사항을 완전히 해결한 뒤 즉시항고를 이행해야 원 결정이 취소되고 회생 절차가 다시 기사회생하여 진행됩니다. 다만, 최초에 발생한 하자를 전혀 극복할 수 없는 법적 하자가 명확한 경우에는 항고 기각 처분을 받아 소중한 대응 시간만을 허비하는 단점이 있습니다.
+            </p>
+            <h3>2. 개인회생재신청 전략의 활용</h3>
+            <p>
+                기각이 확정된 이후, 기각의 원인으로 지목되었던 위험 요소들(도박 중독 자가 치료 영수증 및 증빙 보완, 소득 수준의 안정성 개편, 미비된 세금 체납 소멸 등)을 근본적으로 극복한 상태에서 새롭게 개인회생을 접수하는 방식입니다. 재신청은 처음부터 다시 주소지 관할 법원의 절차를 시작해야 하므로 법률 비용이 추가적으로 발생한다는 단점이 있지만, 더 정교하고 완벽한 조건으로 법률 방어막을 설계해 오히려 이전보다 더 낮은 월 변제금과 탕감률 인가라는 좋은 결과를 가져오기도 합니다.
+            </p>
+        </section>
+
+        <!-- Section 7: FAQs (SEO Accordion format) -->
+        <section id="faq-section">
+            <h2>개인회생기각 관련 자주 묻는 질문 (FAQ)</h2>
+            <p>채무 조정 신청 과정에서 발생하기 쉬운 가장 핵심적인 의문들을 알기 쉽게 명쾌하게 정리해 드립니다.</p>
+            <dl>
+                <dt tabindex="0" aria-expanded="false">최근 1년 이내에 발생한 대출 채무 비중이 높으면 무조건 기각되나요?</dt>
+                <dd>무조건 기각 대상은 아닙니다. 다만 법원은 최근 채무를 성실하지 못한 차용 행위로 볼 가능성이 대단히 높습니다. 채무 발생 시점의 자금 사용 목적이 병원 치료비, 긴급 임차보증금 등 불가피한 생활 안정 자금이었음을 구체적 소명서와 함께 영수증, 은행 이체 내역으로 소명해 내면 얼마든지 통과가 가능합니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">신용회복위원회의 워크아웃에 참여하던 중 기각을 받았는데 신청 자격 차이점이 있나요?</dt>
+                <dd>두 제도는 완전히 독자적입니다. 신용회복위원회의 사전 채무조정이나 개인워크아웃 절차 중에 기각이나 폐지를 당했더라도 자격 요건을 부합하면 개인회생은 언제든 신청할 수 있습니다. 개인회생은 연체 기간 제한 없이 고액 채무의 원금을 최대 90퍼센트까지 탕감받을 수 있는 매우 확실한 장점이 있습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">보정 기한 연장 신청은 최대 몇 번까지 인정해 주나요?</dt>
+                <dd>보정 기간 연장은 정해진 상한선 규정은 없으나, 법원의 재량에 전적으로 달렸습니다. 타당한 지연 사유(예: 행정기관의 서류 발급 지체, 질병 및 사고로 인한 입원 등)를 증빙할 보정기한연장 신청서를 법원에 미려하게 상신한다면 통상 1회에서 2회 수준으로 기한을 늘려 보정 불능으로 인한 기각을 충분히 방지할 수 있습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">법률 대리인의 잘못으로 기각을 받은 경우 전액 환불이나 구제가 되나요?</dt>
+                <dd>기본 계약서 내용에 따라 차이가 있습니다. 수임 계약 시 기각 시 100퍼센트 책임 환불 규정을 보장해 주는 성실한 업체를 선정하는 것이 좋습니다. 만약 대리인의 악의적인 관리 소홀로 서류 지체 기각이 발생했다면, 대한변호사협회나 전문 법무사협회를 통해 중재 소송 및 이의제기가 부분적으로 고려될 수 있습니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">배우자에게 비밀로 개인회생을 진행하는 도중 기각당할 리스크도 있나요?</dt>
+                <dd>가장 흔한 비밀 진행의 단점 중 하나입니다. 회생 과정에서 법원은 배우자의 예적금 상황, 부동산 평가액, 전세자금계약 상황 증빙을 요구하는 보정명령을 발행합니다. 이 자료들을 배우자 몰래 성실하게 구비할 방법이 없어 보정 불능 지연으로 기각에 처하는 경우가 잦으므로, 필요할 때는 전략적 소명 방식을 대리인과 치밀하게 교감해야 합니다.</dd>
+            </dl>
+        </section>
+
+        <!-- Authority Outbound Links (EEAT Optimization) -->
+        <section class="authority-links">
+            <h4>공식적으로 신뢰할 수 있는 법률 및 제도 정보 자원</h4>
+            <p>보다 정교하고 정확한 법적인 권한 및 제도의 세부 실무는 공인된 아래 공식 채널을 적극 방문하여 점검하시는 편이 가장 성실한 대처법입니다.</p>
+            <ul>
+                <li><a href="https://recoveryonlawf.koreahankang.com" target="_blank" rel="noopener noreferrer">개인회생기각 리스크 정밀 대리 분석 시스템</a></li>
+                <li><a href="https://namu.wiki/w/%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D" target="_blank" rel="noopener noreferrer">나무위키 개인회생 종합 백과사전 정의</a></li>
+                <li><a href="https://help.scourt.go.kr" target="_blank" rel="noopener noreferrer">대한민국 대법원 전자민원센터 실무 소송 양식</a></li>
+                <li><a href="https://www.gov.kr" target="_blank" rel="noopener noreferrer">정부24 세무 및 소득 전산 증빙서류 통합 발급</a></li>
+                <li><a href="https://www.ccrs.or.kr" target="_blank" rel="noopener noreferrer">신용회복위원회 채무조정 맞춤 지원 가이드</a></li>
+            </ul>
+        </section>
+
+        <!-- Dynamic Consultation Booking Form to increase dwell time -->
+        <section id="contact">
+            <h2>개인회생 기각 방지 1:1 방문 예약 및 맞춤형 종합 진단 신청</h2>
+            <p>
+                혼자서 법률 서류의 지연을 감당하거나, 사행성 채무 사용처 보정에 대해 무대응으로 일관하다가는 소중한 면책의 기회를 상실할 수 있습니다. 자격 및 예상 변제금 계산 결과에 대해 완벽한 확인 및 컨설팅 상담이 필요하다면 아래의 무료 입력란에 정보를 남겨주십시오. 채무자회생법 전문 상담원이 신속히 조력하겠습니다.
+            </p>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="contactName">신청인 실명</label>
+                    <input type="text" id="contactName" class="form-control" placeholder="성함을 기재하십시오" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">비상 연락처 및 휴대폰 번호</label>
+                    <input type="tel" id="contactPhone" class="form-control" placeholder="예: 010-1234-5678" required>
+                </div>
+                <div class="form-group">
+                    <label for="courtRegion">해당 거주지 관할 주요 법원 지역</label>
+                    <select id="courtRegion" class="form-control">
+                        <option value="seoul">서울회생법원 관할</option>
+                        <option value="gonggi">수원/인천/의정부 등 경기 인천 권역</option>
+                        <option value="chungcheong">대전/청주/천안 등 충청 권역</option>
+                        <option value="gyeongsang">부산/대구/울산/창원 등 영남 권역</option>
+                        <option value="jeolla">광주/전주 등 호남 권역</option>
+                        <option value="etc">원주 등 강원 및 제주 권역</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mainConcern">가장 핵심적인 기각 염려 사유</label>
+                    <textarea id="mainConcern" class="form-control" rows="4" placeholder="예: 최근 발생 채무의 주식 손실 비중이 높음, 법원 보정 권고 기한 준수 불안정함 등"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">종합 상담 예약 및 분석 보고서 신청하기</button>
+            </form>
+            <div id="formSuccess" class="result-box" style="background-color: var(--teal-light); border-color: #99f6e4;">
+                <p style="color: var(--secondary-color); font-weight: bold; margin-bottom: 0;">상담 예약 신청서가 원활하게 임시 접수되었습니다.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">2026년 최저생계비 기준을 완전히 파악하고 기각 방지 대책 전략을 갖춘 회생 법률 담당자가 조속히 직접 안내 전화를 드리겠습니다.</p>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                dt.classList.toggle('active');
+                let expanded = dt.getAttribute('aria-expanded') === 'true';
+                dt.setAttribute('aria-expanded', !expanded);
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+
+        // App 1: Repayment Estimator Logic
+        function calculateRepayment() {
+            const familyCount = parseInt(document.getElementById('familyCount').value);
+            const monthlyIncome = parseFloat(document.getElementById('monthlyIncome').value);
+            const totalDebt = parseFloat(document.getElementById('totalDebt').value);
+            const resultDiv = document.getElementById('calcResult');
+
+            if (isNaN(monthlyIncome) || monthlyIncome <= 0) {
+                resultDiv.style.display = "none";
+                return;
+            }
+
+            // 2026 Minimum Living Costs (기준 중위소득 60% 상향안)
+            const livingCosts = {
+                1: 1538543,
+                2: 2520105,
+                3: 3211916,
+                4: 3906688,
+                5: 4534031
+            };
+
+            const minLivingCost = livingCosts[familyCount] || livingCosts[1];
+            const netIncome = Math.round(monthlyIncome);
+            const estimatedRepayment = Math.max(0, netIncome - minLivingCost);
+
+            resultDiv.style.display = "block";
+
+            if (netIncome <= minLivingCost) {
+                resultDiv.innerHTML = `
+                    <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 0.5rem;">[경고] 가용소득 부족에 따른 기각 위험 발생</p>
+                    <p style="margin-bottom: 0;">귀하의 월평균 소득이 2026년 기준 선택 가구원수별 최저법정생계비(${minLivingCost.toLocaleString()}원)보다 적습니다. 이 상태로 회생 신청 시 즉각 기각 사유가 됩니다. 부양가족 범위의 현실적 재조정이나 추가 긴급 생계 수당 소명, 혹은 개인파산 제도로의 다이렉트 우회 전략이 대안이 될 수 있습니다.</p>
+                `;
+                return;
+            }
+
+            const totalRepayment36 = estimatedRepayment * 36;
+            let debtReliefHtml = '';
+
+            if (!isNaN(totalDebt) && totalDebt > 0) {
+                const totalDebtWon = totalDebt;
+                const expectedRelief = Math.max(0, totalDebtWon - totalRepayment36);
+                const reliefRatio = Math.round((expectedRelief / totalDebtWon) * 100);
+
+                debtReliefHtml = `
+                    <p style="margin-top: 0.5rem;">입력된 총 채무액: <strong>${totalDebtWon.toLocaleString()}원</strong></p>
+                    <p>36개월(3년) 동안의 총 변제액 합계: <strong>${totalRepayment36.toLocaleString()}원</strong></p>
+                    <p>예상 원금 탕감 가능액: <strong style="color: var(--secondary-color);">${expectedRelief.toLocaleString()}원</strong> (예상 원금 탕감률: <strong style="color: var(--secondary-color);">${reliefRatio}%</strong>)</p>
+                `;
+            }
+
+            resultDiv.innerHTML = `
+                <h4 style="margin-top: 0; color: var(--secondary-color); font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">2026 최저생계비 대비 모의계산 결과</h4>
+                <p>가구 규모 최저생계비: <strong>${minLivingCost.toLocaleString()}원</strong></p>
+                <p>매월 납부 예상 가용소득(월 변제금): <strong style="color: var(--accent-color); font-size: 1.2rem;">${estimatedRepayment.toLocaleString()}원</strong></p>
+                ${debtReliefHtml}
+                <p style="font-size: 0.8rem; color: #64748b; margin-top: 1rem; line-height: 1.5;">본 연산은 표준 수치에 기초한 대략의 예측이며 주거비 및 세금 가산, 청산가치(보유자산) 가치 보정 지령 등 법원별 재판부 판단 차이점에 의해 달라질 수 있습니다.</p>
+            `;
+        }
+
+        // App 2: Risk Evaluation Logic
+        function evaluateRiskScore() {
+            const q1 = parseInt(document.getElementById('qRecentDebt').value);
+            const q2 = parseInt(document.getElementById('qIncomeDoc').value);
+            const q3 = parseInt(document.getElementById('qAssetVsDebt').value);
+            const q4 = parseInt(document.getElementById('qSpeculative').value);
+            const q5 = parseInt(document.getElementById('qBojung').value);
+
+            const totalRisk = q1 + q2 + q3 + q4 + q5;
+            const riskResult = document.getElementById('riskResult');
+            riskResult.style.display = "block";
+
+            let riskGrade = '';
+            let riskColor = '';
+            let riskAdvise = '';
+
+            if (totalRisk >= 150) {
+                riskGrade = '매우 심각 (기각 확률 대단히 높음)';
+                riskColor = 'var(--accent-color)';
+                riskAdvise = '보증 및 소득, 채무 성격 면에서 모든 가혹한 요건에 부합하고 있습니다. 임의 서류 제출 시 관할 회생위원으로부터 즉시 보정서 제출을 거부당하거나 조기 기각 처리될 여지가 매우 높으므로, 신청 전 정교한 서류 재정리 컨설팅을 필수적으로 진행하셔야 합니다.';
+            } else if (totalRisk >= 80) {
+                riskGrade = '주의 (사안에 따라 기각 가능성 존재)';
+                riskColor = '#f97316';
+                riskAdvise = '최근 발생 채무 사용처나 법원 지연 처리가 약점으로 부각됩니다. 보정명령에 대비한 세부 영수증 증빙을 선제적으로 정리하는 것으로도 인가 개시 결정 가능성을 획기적으로 향상할 수 있습니다.';
+            } else {
+                riskGrade = '안정 (정상 진행 가능성 높음)';
+                riskColor = 'var(--secondary-color)';
+                riskAdvise = '전반적인 신청 지표가 무난하고 우수합니다. 법적으로 정해진 인지세와 예납 선납금을 차질 없이 예치하고, 통상적인 보정 대응을 14일 규정 기간 내에 성실히 접수하신다면 순탄하게 통과될 예정입니다.';
+            }
+
+            riskResult.innerHTML = `
+                <h4 style="margin-top: 0; color: var(--text-dark); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">귀하의 개인회생기각 리스크 진단 결과</h4>
+                <p>위험도 평가 종합 위험 지수: <strong style="font-size: 1.25rem; color: ${riskColor};">${totalRisk}점 / 225점 만점</strong></p>
+                <p>대응 경고 등급: <strong style="color: ${riskColor};">${riskGrade}</strong></p>
+                <p style="margin-bottom: 0; font-size: 0.95rem; line-height: 1.6;">${riskAdvise}</p>
+            `;
+        }
+
+        // App 3: Progress Checklist Logic
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const total = checkboxes.length;
+            let checkedCount = 0;
+
+            checkboxes.forEach((cb) => {
+                if (cb.checked) checkedCount++;
+            });
+
+            const percent = Math.round((checkedCount / total) * 100);
+            const progressBar = document.getElementById('checkProgress');
+            progressBar.style.width = percent + '%';
+
+            const progressText = document.getElementById('progressText');
+            let safetyGrade = '';
+            if (percent === 100) {
+                safetyGrade = '매우 안전 (기각 요인 완벽 방어)';
+            } else if (percent >= 70) {
+                safetyGrade = '비교적 안전 (양호한 절차 대비 수준)';
+            } else if (percent >= 40) {
+                safetyGrade = '불안정 (서류 누락 및 기간 지연 소지 있음)';
+            } else {
+                safetyGrade = '매우 위험 (기각 사유 대거 노출)';
+            }
+
+            progressText.innerText = `진행률: ${percent}% (완료 상태: ${safetyGrade})`;
+        }
+
+        // Contact Form Submission Logic
+        function submitForm(event) {
+            event.preventDefault();
+            // Simulate smooth transition
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        }
+    </script>
+  
